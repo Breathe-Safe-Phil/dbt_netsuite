@@ -1,7 +1,7 @@
 {% macro get_consolidated_exchange_rates_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "accounting_book_id", "datatype": dbt.type_float()},
     {"name": "accounting_period_id", "datatype": dbt.type_float()},
@@ -26,7 +26,7 @@
 {% macro get_netsuite2_consolidated_exchange_rates_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "averagerate", "datatype": dbt.type_float()},
     {"name": "currentrate", "datatype": dbt.type_float()},
