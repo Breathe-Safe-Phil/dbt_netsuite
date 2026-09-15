@@ -25,3 +25,7 @@
 {% macro duckdb__date_from_parts(year, month, day) %}
     make_date({{ year }}, {{ month }}, {{ day }})
 {% endmacro %}
+
+{% macro sqlserver__date_from_parts(year, month, day) %}
+    datefromparts({{ year }}, {{ month }}, {{ day }})
+{% endmacro %}
