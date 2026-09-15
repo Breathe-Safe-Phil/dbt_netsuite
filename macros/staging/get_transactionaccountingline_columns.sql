@@ -1,7 +1,7 @@
 {% macro get_transactionaccountingline_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "account", "datatype": dbt.type_int()},
     {"name": "accountingbook", "datatype": dbt.type_int()},
@@ -29,7 +29,7 @@
 {% macro get_netsuite2_transactionaccountingline_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "account", "datatype": dbt.type_int()},
     {"name": "accountingbook", "datatype": dbt.type_int()},
