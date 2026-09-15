@@ -1,7 +1,7 @@
 {% macro get_transactions_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "accounting_period_id", "datatype": dbt.type_float()},
     {"name": "currency_id", "datatype": dbt.type_float()},
     {"name": "due_date", "datatype": dbt.type_timestamp()},
@@ -49,7 +49,7 @@
     {"name": "reversaldate", "datatype": dbt.type_timestamp()},
     {"name": "reversaldefer", "datatype": dbt.type_string()},
     {"name": "_fivetran_active", "datatype": dbt.type_boolean()},
-    {"name": "_fivetran_deleted", "datatype": "boolean"}
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()}
 ] %}
 
 {{ fivetran_utils.add_pass_through_columns(columns, var('transactions_pass_through_columns')) }}
