@@ -1,69 +1,54 @@
-{% macro get_accounting_periods_columns() %}
+{% macro get_accounting_books_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
-    {"name": "_fivetran_id", "datatype": dbt.type_string()},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
-    {"name": "accounting_period_id", "datatype": dbt.type_float()},
-    {"name": "closed", "datatype": dbt.type_string()},
-    {"name": "closed_accounts_payable", "datatype": dbt.type_string()},
-    {"name": "closed_accounts_receivable", "datatype": dbt.type_string()},
-    {"name": "closed_all", "datatype": dbt.type_string()},
-    {"name": "closed_on", "datatype": dbt.type_timestamp()},
-    {"name": "closed_payroll", "datatype": dbt.type_string()},
+    {"name": "accounting_book_extid", "datatype": dbt.type_string()},
+    {"name": "accounting_book_id", "datatype": dbt.type_float()},
+    {"name": "accounting_book_name", "datatype": dbt.type_string()},
+    {"name": "base_book_id", "datatype": dbt.type_float()},
+    {"name": "date_created", "datatype": dbt.type_timestamp()},
     {"name": "date_deleted", "datatype": dbt.type_timestamp()},
     {"name": "date_last_modified", "datatype": dbt.type_timestamp()},
-    {"name": "ending", "datatype": dbt.type_timestamp()},
-    {"name": "fiscal_calendar_id", "datatype": dbt.type_float()},
-    {"name": "fivetran_index", "datatype": dbt.type_string()},
-    {"name": "full_name", "datatype": dbt.type_string()},
-    {"name": "is_adjustment", "datatype": dbt.type_string()},
-    {"name": "isinactive", "datatype": dbt.type_string()},
-    {"name": "locked_accounts_payable", "datatype": dbt.type_string()},
-    {"name": "locked_accounts_receivable", "datatype": dbt.type_string()},
-    {"name": "locked_all", "datatype": dbt.type_string()},
-    {"name": "locked_payroll", "datatype": dbt.type_string()},
-    {"name": "name", "datatype": dbt.type_string()},
-    {"name": "parent_id", "datatype": dbt.type_float()},
-    {"name": "quarter", "datatype": dbt.type_string()},
-    {"name": "starting", "datatype": dbt.type_timestamp()},
-    {"name": "year_0", "datatype": dbt.type_string()},
-    {"name": "year_id", "datatype": dbt.type_float()}
+    {"name": "effective_period_id", "datatype": dbt.type_float()},
+    {"name": "form_template_component_id", "datatype": dbt.type_string()},
+    {"name": "form_template_id", "datatype": dbt.type_float()},
+    {"name": "is_adjustment_only", "datatype": dbt.type_string()},
+    {"name": "is_arrangement_level_reclass", "datatype": dbt.type_string()},
+    {"name": "is_consolidated", "datatype": dbt.type_string()},
+    {"name": "is_contingent_revenue_handling", "datatype": dbt.type_string()},
+    {"name": "is_include_child_subsidiaries", "datatype": dbt.type_string()},
+    {"name": "is_primary", "datatype": dbt.type_string()},
+    {"name": "is_two_step_revenue_allocation", "datatype": dbt.type_string()},
+    {"name": "status", "datatype": dbt.type_string()},
+    {"name": "unbilled_receivable_grouping", "datatype": dbt.type_string()}
 ] %}
-
-{{ fivetran_utils.add_pass_through_columns(columns, var('accounting_periods_pass_through_columns')) }}
 
 {{ return(columns) }}
 
 {% endmacro %}
 
-{% macro get_netsuite2_accounting_periods_columns() %}
+{% macro get_netsuite2_accounting_books_columns() %}
 
 {% set columns = [
     {"name": "_fivetran_active", "datatype": dbt.type_boolean()},
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
-    {"name": "alllocked", "datatype": dbt.type_string()},
-    {"name": "allownonglchanges", "datatype": dbt.type_string()},
-    {"name": "aplocked", "datatype": dbt.type_string()},
-    {"name": "arlocked", "datatype": dbt.type_string()},
-    {"name": "closed", "datatype": dbt.type_string()},
-    {"name": "closedondate", "datatype": dbt.type_timestamp()},
+    {"name": "basebook", "datatype": dbt.type_int()},
+    {"name": "contingentrevenuehandling", "datatype": dbt.type_string()},
     {"name": "date_deleted", "datatype": dbt.type_timestamp()},
-    {"name": "enddate", "datatype": dbt.type_timestamp()},
+    {"name": "effectiveperiod", "datatype": dbt.type_int()},
+    {"name": "externalid", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_int()},
-    {"name": "isadjust", "datatype": dbt.type_string()},
-    {"name": "isinactive", "datatype": dbt.type_string()},
-    {"name": "isposting", "datatype": dbt.type_string()},
-    {"name": "isquarter", "datatype": dbt.type_string()},
-    {"name": "isyear", "datatype": dbt.type_string()},
+    {"name": "isadjustmentonly", "datatype": dbt.type_string()},
+    {"name": "isconsolidated", "datatype": dbt.type_string()},
+    {"name": "isprimary", "datatype": dbt.type_string()},
     {"name": "lastmodifieddate", "datatype": dbt.type_timestamp()},
-    {"name": "parent", "datatype": dbt.type_int()},
-    {"name": "periodname", "datatype": dbt.type_string()},
-    {"name": "startdate", "datatype": dbt.type_timestamp()}
+    {"name": "name", "datatype": dbt.type_string()},
+    {"name": "subsidiariesstring", "datatype": dbt.type_string()},
+    {"name": "twosteprevenueallocation", "datatype": dbt.type_string()},
+    {"name": "unbilledreceivablegrouping", "datatype": dbt.type_string()}
 ] %}
-
-{{ fivetran_utils.add_pass_through_columns(columns, var('accounting_periods_pass_through_columns')) }}
 
 {{ return(columns) }}
 
