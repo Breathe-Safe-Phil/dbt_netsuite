@@ -1,7 +1,7 @@
 {% macro get_items_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "allow_drop_ship", "datatype": dbt.type_string()},
     {"name": "alt_demand_source_item_id", "datatype": dbt.type_float()},
@@ -193,7 +193,7 @@
 
 {% set columns = [
     {"name": "_fivetran_active", "datatype": dbt.type_boolean()},
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "fullname", "datatype": dbt.type_string()},
