@@ -1,7 +1,7 @@
 {% macro get_job_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "accountnumber", "datatype": dbt.type_string()},
     {"name": "actualtime", "datatype": dbt.type_float()},
