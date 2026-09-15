@@ -1,7 +1,7 @@
 {% macro get_classes_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "class_id", "datatype": dbt.type_float()},
     {"name": "full_name", "datatype": dbt.type_string()}
 ] %}
@@ -15,7 +15,7 @@
 {% macro get_netsuite2_classes_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "externalid", "datatype": dbt.type_string()},
     {"name": "fullname", "datatype": dbt.type_string()},
