@@ -1,7 +1,7 @@
 {% macro get_accounts_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "account_id", "datatype": dbt.type_float()},
     {"name": "accountnumber", "datatype": dbt.type_string()},
     {"name": "general_rate_type", "datatype": dbt.type_string()},
@@ -23,7 +23,7 @@
 {% set columns = [
 
     {"name": "_fivetran_active", "datatype": dbt.type_boolean()},
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "externalid", "datatype": dbt.type_string()},
