@@ -1,7 +1,7 @@
 {% macro get_customers_columns() %}
 
 {% set columns = [
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "city", "datatype": dbt.type_string()},
     {"name": "companyname", "datatype": dbt.type_string()},
     {"name": "country", "datatype": dbt.type_string()},
@@ -22,7 +22,7 @@
 
 {% set columns = [
     {"name": "_fivetran_active", "datatype": dbt.type_boolean()},
-    {"name": "_fivetran_deleted", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": dbt.type_boolean()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "entityid", "datatype": dbt.type_string()},
     {"name": "externalid", "datatype": dbt.type_string()},
