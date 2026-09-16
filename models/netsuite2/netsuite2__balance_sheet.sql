@@ -5,8 +5,8 @@
 {%- set lookback_window = var('lookback_window', 3) -%}
 
 {%- set transaction_level = not var('netsuite2__aggregate_balance_sheet', false) -%}
-{# Incremental materialization can only be turned on when not aggregating. False by default for BQ and Databricks #}
-{%- set using_incremental = transaction_level and target.type not in ('bigquery', 'databricks', 'spark') -%}
+{# Incremental materialization can only be turned on when not aggregating. False by default for BQ, Databricks, and SQL Server #}
+{%- set using_incremental = transaction_level and target.type not in ('bigquery', 'databricks', 'spark', 'sqlserver') -%}
 {% set partition_by_field = '_fivetran_synced_date' if transaction_level else 'accounting_period_ending' %}
 {% set pass_through_column_count = accounts_pass_through_columns|length + (balance_sheet_transaction_detail_columns|length if transaction_level else 0) %}
 {% set variable_column_count = (2 if multibook_accounting_enabled else 0) + (3 if using_to_subsidiary_and_exchange_rate else 0) %}
